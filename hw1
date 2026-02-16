@@ -1,0 +1,51 @@
+CREATE OR REPLACE TABLE raw_data AS
+SELECT *
+FROM read_json_auto('D:\KSE study\concept\hw1\tvs.json',
+                    maximum_object_size = 2147483648)
+    LIMIT 1000;
+
+DESCRIBE raw_data;
+
+
+CREATE OR REPLACE TABLE tvs AS
+SELECT
+    CAST(JSON_EXTRACT(_id, '$.$oid') AS VARCHAR) AS tv_id,
+    UNNEST(t.origin_country) AS country,
+    name,
+    original_language,
+    status,
+    vote_count,
+    CAST(JSON_EXTRACT(number_of_episodes, '$') AS INT) AS episodes
+
+FROM raw_data t;
+
+
+SELECT tv_id,
+       country,
+       name,
+       episodes,
+       AVG(episodes) OVER (PARTITION BY country) AS average_episodes
+FROM tvs
+ORDER BY average_episodes DESC;
+--Using this query we can determine the difference between the
+--average number of episodes by country and the number of episodes
+--that are in TV show. We can see that India and Mexico have the most episodes on average.
+
+
+SELECT name,
+       status,
+       original_language,
+       vote_count,
+       ROUND((vote_count * 100)/SUM(vote_count) OVER (PARTITION BY country), 1 )AS vote_result_per
+
+FROM tvs
+WHERE original_language = 'en' AND status = 'Ended' AND vote_count IS NOT NULL
+ORDER BY vote_result_per DESC;
+
+--With this code I can find out what percentage share the series has
+--compared to the total number of votes in the whole country. With the
+--condition that the series is completed and in English. So if you do
+--not take into account the series with 100% then the largest percentage share is Shuriken School
+
+
+
