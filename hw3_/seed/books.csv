@@ -1,0 +1,21 @@
+book_id,title,genre,price,cost
+101,1984,Fiction,15,8
+102,Dune,Sci-Fi,20,12
+103,Sapiens,History,25,15
+104,Atomic Habits,Self-Help,18,10
+105,The Hobbit,Fantasy,22,14
+106,Steve Jobs,Biography,30,18
+107,To Kill a Mockingbird,Fiction,14,7
+108,The Martian,Sci-Fi,19,11
+109,Thinking Fast and Slow,Psychology,24,14
+110,Clean Code,IT,35,20
+111,The Great Gatsby,Fiction,12,6
+112,Foundation,Sci-Fi,21,13
+113,A Brief History of Time,Science,20,12
+114,Deep Work,Self-Help,17,9
+115,Harry Potter,Fantasy,28,16
+116,Shoe Dog,Biography,26,15
+117,Pride and Prejudice,Fiction,10,5
+118,Neuromancer,Sci-Fi,16,9
+119,Guns Germs and Steel,History,23,13
+120,The Pragmatic Programmer,IT,32,19
