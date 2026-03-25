@@ -1,0 +1,14 @@
+name: 'hw3'
+version: '1.0.0'
+config-version: 2
+
+profile: 'hw3'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+analysis-paths: ["analysis"]
+
+models:
+  hw3:
+    materialized: table
