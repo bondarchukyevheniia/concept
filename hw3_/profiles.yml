@@ -1,0 +1,6 @@
+hw3:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: 'hw3.duckdb'
